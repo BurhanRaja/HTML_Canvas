@@ -1,16 +1,12 @@
 const canvas = document.getElementById('canvas-resize')
 
-canvas.width = window.innerWidth - 2
-canvas.height = window.innerHeight - 10
+canvas.width = window.innerWidth - 3
+canvas.height = window.innerHeight - 1
 
 const c = canvas.getContext('2d')
 
-c.fillStyle = "yellow";
-c.font = "bold 40px Arial";
-c.fillText("Hello Bro", (canvas.width / 2) - 17, (canvas.height / 2) + 8);
-
 // Get random Color
-const getrandomColor = () =>  {
+const getrandomColor = () => {
     const letters = '0123456789abcdef'
     let color = '#'
 
@@ -54,9 +50,9 @@ let circleArray = []
 
 for (let i = 0; i < 100; i++) {
     let r = 40
-    let x = Math.random() * (innerWidth-2*r)+r
+    let x = Math.random() * (innerWidth - 2 * r) + r
     let dx = Math.random() * 3
-    let y = Math.random() * (innerHeight-2*r)+r
+    let y = Math.random() * (innerHeight - 2 * r) + r
     let dy = Math.random() * 3
 
     circleArray.push(new Circle(x, y, dx, dy, r))
@@ -70,6 +66,22 @@ function animate() {
     for (let i = 0; i < circleArray.length; i++) {
         circleArray[i].update()
     }
+
+    c.font = "20px Georgia";
+    c.fillStyle = 'white';
+    c.textAlign = "center";
+    c.fillText("Hello World!", 600, 300);
+
+    c.font = "30px Verdana";
+    // Create gradient
+    var gradient = c.createLinearGradient(0, 0, canvas.width, 0);
+    gradient.addColorStop("0", " magenta");
+    gradient.addColorStop("0.5", "blue");
+    gradient.addColorStop("1.0", "red");
+    // Fill with gradient
+    c.fillStyle = gradient;
+    c.textAlign = "center";
+    c.fillText("Big smile!", 600, 340);
 }
 
 animate()
